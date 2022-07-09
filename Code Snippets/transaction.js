@@ -14,6 +14,14 @@ const tronWeb = new TronWeb({
 to = tronWeb.address.toHex('TCyKydExSAApBFLYVyWs7G5Ye3z9F4AJpG');
 from = tronWeb.address.toHex('TUSuCUcCDARiKkoirixEsnvkZ7uiSaeqmd');
 
-console.log(tronWeb.trx.sendTransaction(to, 1000, from));
+// before transfer
+tronWeb.trx.getBalance(to).then(result => console.log(result));
+tronWeb.trx.getBalance(from).then(result => console.log(result));
 
+//tronWeb.trx.sendTransaction(to, 1000, from).then(result => console.log(result));
+tronWeb.trx.sendTransaction(to, 10, tronWeb.defaultPrivateKey).then(result => console.log(result));
+
+// after transfer
+tronWeb.trx.getBalance(to).then(result => console.log(result));
+tronWeb.trx.getBalance(from).then(result => console.log(result));
 
