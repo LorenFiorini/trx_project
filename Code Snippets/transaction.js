@@ -8,8 +8,7 @@ const TronWeb = require('tronweb');
 const tronWeb = new TronWeb({
     fullHost: host_url_2,
     headers: { "TRON-PRO-API-KEY": api_key },
-    privateKey: pri,
-   
+    privateKey: process.env.PRIVATE_KEY_SHASTA,
 });
 
 const to = tronWeb.address.toHex('TCyKydExSAApBFLYVyWs7G5Ye3z9F4AJpG');
@@ -20,7 +19,7 @@ const from = tronWeb.address.toHex('TUSuCUcCDARiKkoirixEsnvkZ7uiSaeqmd');
 tronWeb.trx.getBalance(to).then(result => console.log(result));
 tronWeb.trx.getBalance(from).then(result => console.log(result));
 
-tronWeb.trx.sendTransaction(to, 10, from).then(result => console.log(result));
+//tronWeb.trx.sendTransaction(to, 10, process.env.PRIVATE_KEY_SHASTA).then(result => console.log(result));
 //tronWeb.trx.sendTransaction(to, 10).then(result => console.log(result));
 
 // after transfer
